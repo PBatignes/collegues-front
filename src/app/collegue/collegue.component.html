@@ -1,1 +1,20 @@
-<p>{{col}}</p>
+<div class="card" style="max-width: 500px;">
+    <div class="row no-gutters">
+        <div class="col-md-5" style="background: #868e96;">
+            <img src={{col.photoUrl}} class="card-img-top h-100" alt="photoUrl">
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <ul>
+                    <li>Matricule : {{col.matricule}}</li>
+                    <li>Nom : {{col.nom}}</li>
+                    <li>Prénom : {{col.prenom}}</li>
+                    <li>Date de Naissance : {{col.dateDeNaissance}}</li>
+                    <li>Email : {{col.email}}</li>
+                </ul>
+                <a (click)="Creer()" href="#">Créer un nouveau collègue</a>
+                <button (click)="Modifier()">Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>

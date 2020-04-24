@@ -15,4 +15,12 @@ export class CollegueComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Creer(): void {
+    console.log("Création d'un collègue")
+  }
+
+  Modifier() {
+    console.log("Modification du collègue");
+  }
+
 }
