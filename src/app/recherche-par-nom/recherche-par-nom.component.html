@@ -1,0 +1,11 @@
+<div>
+    <label><b>Recherche par nom :</b></label>
+    <input type="text" class="form-control">
+    <button class="btn btn-success" (click)="Recherche()">Rechercher</button>
+</div>
+
+<ng-container *ngIf="rechercheEnCours">
+    <li class="list-group-item" *ngFor="let col of listeCol">
+        <p>{{col.matricule}} - {{col.prenom}} - {{col.nom | uppercase}} - {{col.dateDeNaissance | date:'dd/MM/yyyy'}} - {{col.email}}</p>
+    </li>
+</ng-container>

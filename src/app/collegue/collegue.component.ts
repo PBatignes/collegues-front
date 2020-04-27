@@ -10,6 +10,9 @@ export class CollegueComponent implements OnInit {
 
   @Input() col:Collegue;
 
+  modif:Boolean = false;
+  message:string;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,7 +23,17 @@ export class CollegueComponent implements OnInit {
   }
 
   Modifier() {
-    console.log("Modification du collègue");
+    this.modif = true;
+  }
+
+  Valider() {
+    this.modif = false;
+    this.message = 'Modifications enregistrees';
+    
+    //Disparition du message de validation au bout de 2 secondes
+    setTimeout(() => {
+      this.message = '';
+    },2000)
   }
 
 }

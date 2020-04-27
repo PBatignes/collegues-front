@@ -1,20 +1,45 @@
-<div class="card" style="max-width: 500px;">
-    <div class="row no-gutters">
-        <div class="col-md-5" style="background: #868e96;">
-            <img src={{col.photoUrl}} class="card-img-top h-100" alt="photoUrl">
+<div class="row">
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="{{col.photoUrl}}" alt="Photo collègue" class="rounded img-fluid" />
         </div>
-        <div class="col-md-7">
-            <div class="card-body">
-                <ul>
-                    <li>Matricule : {{col.matricule}}</li>
-                    <li>Nom : {{col.nom}}</li>
-                    <li>Prénom : {{col.prenom}}</li>
-                    <li>Date de Naissance : {{col.dateDeNaissance}}</li>
-                    <li>Email : {{col.email}}</li>
-                </ul>
-                <a (click)="Creer()" href="#">Créer un nouveau collègue</a>
-                <button (click)="Modifier()">Modifier</button>
+        <div class="col-sm-8">
+
+            <label> <b>Matricule : </b></label> {{col.matricule}}
+            <br />
+
+            <label> <b>Nom :</b></label> {{col.nom}}
+            <br />
+
+            <label> <b>Prenom :</b></label> {{col.prenom}}
+            <br />
+
+            <label> <b>Date de naissance :</b></label> {{col.dateDeNaissance | date:'dd/MM/yyyy'}}
+            <br />
+
+            <label> <b>Email :</b></label>
+            <ng-container *ngIf="!modif; else blocModificationEmail">
+                {{col.email}}
+            </ng-container>
+            <ng-template #blocModificationEmail>
+                <input class="form-control" type="text" value="{{col.email}}">
+            </ng-template>
+            <br />
+
+            <ng-container *ngIf="modif">
+                <label> <b>Photo URL :</b></label>
+                <input class="form-control" id="url" name="url" rows="5" cols="33" value="{{col.photoUrl}}">
+            </ng-container>
+            <br />
+
+            <div class="btn-group">
+                <a *ngIf="!modif" href="#">Créer un collègue</a>
+                <button (click)="Modifier()" type="button" class="btn btn-primary" *ngIf="!modif">
+					Modifier </button>
+                <button (click)="Valider()" type="button" class="btn btn-primary" *ngIf="modif"> Valider
+				</button>
             </div>
+            <h2 class="text-success">{{message}}</h2>
         </div>
     </div>
 </div>
