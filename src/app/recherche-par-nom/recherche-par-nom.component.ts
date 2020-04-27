@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { listeCollegues } from '../mock/matricules.mock';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-recherche-par-nom',
@@ -9,8 +9,9 @@ import { listeCollegues } from '../mock/matricules.mock';
 export class RechercheParNomComponent implements OnInit {
 
   @Input() rechercheEnCours:boolean = false;
-  listeCol = listeCollegues;
-  constructor() { }
+  listeCol = this.dataService.rechercherParNom('temp');
+  
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }

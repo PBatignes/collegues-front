@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/collegue';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-collegue',
@@ -8,12 +9,12 @@ import { Collegue } from '../models/collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() col:Collegue;
+  col:Collegue = this.dataService.recupererCollegueCourant();
 
   modif:Boolean = false;
   message:string;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
