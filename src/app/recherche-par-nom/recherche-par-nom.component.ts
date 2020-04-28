@@ -8,8 +8,8 @@ import { DataService } from '../services/data.service';
 })
 export class RechercheParNomComponent implements OnInit {
 
-  @Input() rechercheEnCours:boolean = false;
-  listeCol = this.dataService.rechercherParNom('temp');
+  rechercheEnCours:boolean = false;
+  listeCol: string[];
   
   constructor(private dataService: DataService) { }
 
@@ -17,8 +17,18 @@ export class RechercheParNomComponent implements OnInit {
   }
 
 
-  Recherche() {
+  Recherche(nom: string) {
+    this.dataService.rechercherParNom(nom).subscribe(data => {
+      this.listeCol = data;
+    }, error => {
+      console.log(`erreur : ${error}`);
+    });
+
     this.rechercheEnCours = true;
+  }
+
+  afficherCollegue(matricule: string){
+    this.dataService.requestGetCollegue(matricule);
   }
 
 }
