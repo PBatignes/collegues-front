@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class CollegueComponent implements OnInit, OnDestroy {
 
-  col:Collegue = this.dataService.recupererCollegueCourant();
+  col:Collegue;
   subCollegue: Subscription;
 
   modif:Boolean = false;
@@ -27,7 +27,7 @@ export class CollegueComponent implements OnInit, OnDestroy {
   }
 
   Creer(): void {
-    console.log("Création d'un collègue")
+    this.dataService.activerCreation();
   }
 
   Modifier() {

@@ -33,7 +33,7 @@
             <br />
 
             <div class="btn-group">
-                <a *ngIf="!modif" href="#">Créer un collègue</a>
+                <a *ngIf="!modif" href="#" (click)="Creer()">Créer un collègue</a>
                 <button (click)="Modifier()" type="button" class="btn btn-primary" *ngIf="!modif">
 					Modifier </button>
                 <button (click)="Valider()" type="button" class="btn btn-primary" *ngIf="modif"> Valider

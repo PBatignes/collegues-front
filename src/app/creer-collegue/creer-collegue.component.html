@@ -1,0 +1,91 @@
+<form class="form-group" #formCreation="ngForm">
+    <div class="row">
+
+        <div class="col-12 col-sm-3 m-auto d-flex justify-content-center">
+            <img *ngIf="photoPre; else elseBlock" src={{collegueSaisie.photoUrl}} class="img-fluid img-thumbnail" alt="photo de profil">
+            <ng-template #elseBlock>
+                <button class="btn btn-outline-dark" (click)="previsualiserPhoto()">Previsualiser photo</button>
+            </ng-template>
+        </div>
+
+        <div class="col-12 col-sm-9 m-auto">
+
+            <div class="row">
+                <div class="col">
+                    <label for="id_nom">Nom :</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="id_nom" name="nom" class="form-control" [(ngModel)]="collegueSaisie.nom" required #nom="ngModel">
+                </div>
+                <div class="col-12">
+                    <div *ngIf="( submit || nom.dirty) && nom.invalid" class="alert alert-warning" role="alert">
+                        Veuillez renseigner un nom.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="id_prenom">Prénom :</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="id_prenom" name="prenoms" class="form-control" [(ngModel)]="collegueSaisie.prenoms" required #prenom="ngModel">
+                </div>
+                <div class="col-12">
+                    <div *ngIf="( submit || prenom.dirty) && prenom.invalid" class="alert alert-warning" role="alert">
+                        Veuillez renseigner un prénom.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="id_date">Date de naissance :</label>
+                </div>
+                <div class="col">
+                    <input type="date" id="id_date" class="form-control" name="dateDeNaissance" [(ngModel)]="collegueSaisie.dateDeNaissance" required #date="ngModel">
+                </div>
+                <div class="col-12">
+                    <div *ngIf="( submit || date.dirty) && date.invalid" class="alert alert-warning" role="alert">
+                        Veuillez renseigner une date de naissance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="id_email">Email :</label>
+                </div>
+                <div class="col">
+                    <input type="email" id="id_email" class="form-control" name="email" [(ngModel)]="collegueSaisie.email" required #email="ngModel">
+                </div>
+                <div class="col-12">
+                    <div *ngIf="( submit || email.dirty) && email.invalid" class="alert alert-warning" role="alert">
+                        Veuillez renseigner un email.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="id_photoUrl">Photo URL :</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="id_photoUrl" class="form-control" name="photoUrl" [(ngModel)]="collegueSaisie.photoUrl" required minlength="7" #photo="ngModel">
+                </div>
+                <div class="col-12">
+                    <div *ngIf="( submit || photo.dirty) && photo.invalid" class="alert alert-warning" role="alert">
+                        Veuillez indiquer l'url (minimum 7 caractères) d'une photo de profil.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-9 col-3">
+                    <button class="btn btn-primary" (click)="creerCollegue()">Créer</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

@@ -4,6 +4,11 @@
         <app-recherche-par-nom></app-recherche-par-nom>
     </div>
     <div class="col">
-        <app-collegue></app-collegue>
+        <ng-container *ngIf="!creation; else elseBlock">
+            <app-collegue></app-collegue>
+        </ng-container>
+        <ng-template #elseBlock>
+            <app-creer-collegue></app-creer-collegue>
+        </ng-template>
     </div>
 </div>

@@ -29,6 +29,7 @@ export class RechercheParNomComponent implements OnInit {
 
   afficherCollegue(matricule: string){
     this.dataService.requestGetCollegue(matricule);
+    this.dataService.desactiverCreation();
   }
 
 }

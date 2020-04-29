@@ -3,8 +3,10 @@ import { listeCollegues } from '../mock/matricules.mock';
 import { Collegue } from '../models/Collegue';
 import { collegueMock } from '../mock/collegues.mock';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject  } from 'rxjs';
+import { Observable, Subject, BehaviorSubject  } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import CollegueSaisie from '../models/CollegueSaisie';
+import { tap } from 'rxjs/operators';
 
 const URL_BACKEND = environment.backendUrl;
 
@@ -12,11 +14,11 @@ const URL_BACKEND = environment.backendUrl;
   providedIn: 'root'
 })
 
-
-
 export class DataService {
 
-  private colCourant = new Subject<Collegue>();
+  private colCourant = new BehaviorSubject<Collegue>(collegueMock);
+
+  private creation = new Subject<boolean>();
 
   private cache = new Map();
 
@@ -51,8 +53,29 @@ export class DataService {
     }
   }
 
+  creerCollegue(collegueSaisie: CollegueSaisie){
+    return this.http.post<Collegue>(URL_BACKEND, collegueSaisie).pipe(
+      tap(collegue => {
+        this.colCourant.next(collegue);
+        this.desactiverCreation();
+      })
+    );
+  }
+
+  activerCreation(){
+    this.creation.next(true);
+  }
+
+  desactiverCreation(){
+    this.creation.next(false);
+  }
+
   get collegueCourant() {
     return this.colCourant.asObservable();
+  }
+
+  get modeCrea() {
+    return this.creation.asObservable();
   }
 
 }
