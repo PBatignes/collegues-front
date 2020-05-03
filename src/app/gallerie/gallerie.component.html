@@ -1,0 +1,18 @@
+<div class="row">
+
+    <div class="col-12 text-center my-3">
+        <h1>Gallerie</h1>
+    </div>
+
+    <!-- Erreur requete-->
+    <ng-container *ngIf="error">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="alert alert-danger text-center" role="alert">Impossible d'afficher la gallerie</div>
+        </div>
+    </ng-container>
+
+    <div *ngFor="let photo of photos" class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center mb-4">
+        <img src={{photo.photoUrl}} class="btn bg-light rounded p-1" style="width: 200px; height: 200px;">
+    </div>
+
+</div>

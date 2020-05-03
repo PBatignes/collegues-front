@@ -9,6 +9,10 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CreerCollegueComponent } from './creer-collegue/creer-collegue.component';
 import { FormsModule } from '@angular/forms';
+import { AccueilComponent } from './accueil/accueil.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './app.route';
 
 @NgModule({
   declarations: [
@@ -16,9 +20,12 @@ import { FormsModule } from '@angular/forms';
     CollegueComponent,
     RechercheParNomComponent,
     HeaderComponent,
-    CreerCollegueComponent
+    CreerCollegueComponent,
+    AccueilComponent,
+    GallerieComponent
   ],
   imports: [
+    RouterModule.forRoot(ROUTES),
     BrowserModule,
     NgbModule,
     HttpClientModule,

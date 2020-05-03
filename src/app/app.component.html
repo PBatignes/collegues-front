@@ -1,14 +1,15 @@
-<app-header></app-header>
-<div class="row">
-    <div class="col">
-        <app-recherche-par-nom></app-recherche-par-nom>
-    </div>
-    <div class="col">
-        <ng-container *ngIf="!creation; else elseBlock">
-            <app-collegue></app-collegue>
-        </ng-container>
-        <ng-template #elseBlock>
-            <app-creer-collegue></app-creer-collegue>
-        </ng-template>
-    </div>
-</div>
+<header>
+
+    <app-header></app-header>
+
+</header>
+
+<main class="container-fluid">
+
+    <router-outlet></router-outlet>
+
+</main>
+
+<footer>
+
+</footer>

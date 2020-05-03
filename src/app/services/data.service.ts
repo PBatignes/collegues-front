@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject  } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import CollegueSaisie from '../models/CollegueSaisie';
+import CollegueModif from '../models/CollegueModif';
 import { tap } from 'rxjs/operators';
+import { Photo } from '../models/Photo';
 
 const URL_BACKEND = environment.backendUrl;
 
@@ -60,6 +62,18 @@ export class DataService {
         this.desactiverCreation();
       })
     );
+  }
+
+  updateCollegue(collegueModif: CollegueModif){
+    return this.http.patch<Collegue>(URL_BACKEND + collegueModif.matricule, collegueModif).pipe(
+      tap(collegue => {
+        this.colCourant.next(collegue);
+      })
+    );
+  }
+
+  getAllPhotos() {
+    return this.http.get<Photo[]>(URL_BACKEND + 'photos');
   }
 
   activerCreation(){

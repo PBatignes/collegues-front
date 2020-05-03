@@ -1,0 +1,13 @@
+<div class="row">
+
+    <app-recherche-par-nom class="col-12 col-lg-6"></app-recherche-par-nom>
+
+    <ng-container *ngIf="creation; else elseBlock">
+        <app-creer-collegue class="col-12 col-lg-6"></app-creer-collegue>
+    </ng-container>
+
+    <ng-template #elseBlock>
+        <app-collegue class="col-12 col-lg-6"></app-collegue>
+    </ng-template>
+
+</div>
